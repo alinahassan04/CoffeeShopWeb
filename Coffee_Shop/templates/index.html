@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coffee Shop App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, select { margin: 5px; }
+    button { margin: 5px; }
+    section { margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+  <h1>Coffee Shop App</h1>
+
+  <section>
+    <h2>Register</h2>
+    <input id="regUsername" placeholder="username">
+    <input id="regEmail" placeholder="email">
+    <input id="regPassword" placeholder="password" type="password">
+    <select id="regRole">
+      <option value="user">user</option>
+      <option value="manager">manager</option>
+      <option value="admin">admin</option>
+    </select>
+    <button onclick="register()">Register</button>
+    <p id="registerResult"></p>
+  </section>
+
+  <section>
+    <h2>Login</h2>
+    <input id="loginUsername" placeholder="username">
+    <input id="loginPassword" placeholder="password" type="password">
+    <button onclick="login()">Login</button>
+    <p id="loginResult"></p>
+  </section>
+
+</body>
+
+<script src="/static/script.js"></script>
+
+</html>
