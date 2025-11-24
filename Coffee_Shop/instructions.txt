@@ -1,0 +1,20 @@
+Download folder
+
+Download MySQL (server and workbench) ----- https://dev.mysql.com/downloads/installer/
+	(Make sure to create a password, if left empty it can cause problems when trying to load database)
+	(If you want to use MySQL shell in windows terminal, instead of in the shell itself, you need to add MySQL shell exe to system environment variable PATH)
+Add .sql file to mySQL workbench
+
+Create python virtual environment
+In the .env file enter your mySQL root password after SQL_PASSWORD
+Download flask ----- pip install Flask
+Download flask SQLAlchemy ----- pip install Flask-SQLAlchemy
+Download flask bcrypt ----- pip install Flask-Bcrypt
+Download flask jwt extended ----- pip install flask-jwt-extended
+Download python dotenv ----- pip install python-dotenv
+Download pymysql ----- pip install pymysql
+
+
+in windows terminal (after entering mysql -u root -p) or in MySQL shell (\sql to enter sql mode) enter: CREATE DATABASE coffeeshop;
+
+in virtual environment terminal enter flask initdb
