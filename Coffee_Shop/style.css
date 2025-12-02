@@ -1,0 +1,308 @@
+/* https://medium.com/@lostcoder20/how-to-create-a-modern-login-and-signup-form-page-html-css-tutorial-3805222d3334*/
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* navigation bar */
+.nav {
+  position: fixed;
+  background-color: #4E1411;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 0;
+  z-index: 10; 
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.nav ul {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+}
+
+.nav a {
+  color: #f2f2f2;
+  text-decoration: none;
+  padding: 7px 15px;
+}
+
+/* hero image under navigation bar
+https://www.w3schools.com/howto/howto_css_hero_image.asp 
+    */
+    
+.hero-image {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.squarespace-cdn.com/content/v1/5659e2c8e4b0fad364ec94ae/1676303662264-2BGT8WX5KOOQNK30SG8G/Qahwah+House+Interior+Design+Z+North+Studio+%282%29.jpg");
+  
+  height: 100vh;      /* full screen */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin-top: 80px;    /* offset for fixed navbar */
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  padding: 12px 28px;
+  background-color: #EBBBA3;
+  cursor: pointer;
+  border-radius: 25px;
+  border: 2px solid #EBBBA3;
+
+}
+
+.hero-text button:hover {
+  background-color: #4E1411;
+  color: white;
+}
+
+/*Signup form*/
+/* css for:
+- sign up form tutorial https://www.youtube.com/watch?v=3vVUXnhSc7w
+- transitions: https://www.w3schools.com/css/css3_transitions.asp
+*/
+
+.signup-body {
+    font-family: Arial, Helvetica, sans-serif;
+    /*make gradient background: https://www.w3schools.com/css/css3_gradients.asp*/
+    background: linear-gradient(135deg, #EDD0A5, #4E1411);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.5;
+}
+/*container for form*/
+.signup-form {
+    width: 400px;
+    background-color: white; 
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 20px rgba(239, 235, 235, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.form-container {
+    width: 100%;
+}
+/*header for form*/
+.form-container h2 {
+    text-align: center;
+    color: #4E1411;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/*Signup form input fields*/
+.form-container form input[type="text"],
+.form-container form input[type="password"] {
+    width: 90%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #4E1411;
+    border-radius: 8px;
+    background-color: white; 
+    color: #4E1411;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.form-container form input[type="text"]:focus,
+.form-container form input[type="password"]:focus {
+    border-color: #EBBBA3;
+    outline: none;
+    box-shadow: 0 0 5px #EBBBA3;
+}
+
+.form-container form input[type="submit"] {
+    width: 50%;
+    padding: 12px;
+    background-color: #4E1411;
+    color: #EBBBA3;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0 auto;
+    display: block;  
+}
+
+.form-container form input[type="submit"]:hover {
+    background-color: #EBBBA3;
+    color: #4E1411;
+}
+
+/* drop down menu for user select */
+.form-container form select {
+    width: 99%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #4E1411;
+    border-radius: 8px;
+    background-color: white;
+    color: #4E1411;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.form-container form select:focus {
+    border-color: #EBBBA3;
+    outline: none;
+    box-shadow: 0 0 5px #EBBBA3;
+}
+
+/*login form*/
+/* css for login form tutorial https://www.youtube.com/watch?v=3vVUXnhSc7w*/
+
+.login-body {
+    font-family: Arial, Helvetica, sans-serif;
+    /*make gradient background: https://www.w3schools.com/css/css3_gradients.asp*/
+    background: linear-gradient(135deg,#4E1411, #EDD0A5);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.5;
+}
+/*container for form*/
+.login-form {
+    width: 400px;
+    background-color: white; 
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 20px rgba(239, 235, 235, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.loginform-container {
+    width: 100%;
+}
+/*header for form*/
+.loginform-container h2 {
+    text-align: center;
+    color: #4E1411;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/*login form input fields*/
+.loginform-container form input[type="text"],
+.loginform-container form input[type="password"] {
+    width: 90%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #4E1411;
+    border-radius: 8px;
+    background-color: white; 
+    color: #4E1411;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.loginform-container form input[type="text"]:focus,
+.loginform-container form input[type="password"]:focus {
+    border-color: #EBBBA3;
+    outline: none;
+    box-shadow: 0 0 5px #EBBBA3;
+}
+
+.loginform-container form input[type="submit"] {
+    width: 50%;
+    padding: 12px;
+    background-color: #4E1411;
+    color: #EBBBA3;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0 auto;
+    display: block;  
+}
+
+.loginform-container form input[type="submit"]:hover {
+    background-color: #EBBBA3;
+    color: #4E1411;
+}
+
+/*learn more section*/
+.about-coffee {
+    background: linear-gradient(135deg, #EBBBA3, #4E1411);
+    padding: 70px 25px;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    margin: 100px auto;
+    max-width: 900px;
+  }
+  
+  .about-coffee h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .about-coffee p {
+    font-size: 18px;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+  
+ /*coffee cards
+ How TO - Cards: https://www.w3schools.com/howto/howto_css_cards.asp*/ 
+  .coffee-lists {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+  }
+  
+  .coffee-list {
+    background: #EBBBA3;
+    padding: 20px 30px;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #4E1411;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform .2s ease;
+  }
+  
+  .coffee-list:hover {
+  /* make cards vertical: https://www.w3schools.com/cssref/func_translatey.php */
+    transform: translateY(-5px);
+  }
+  
