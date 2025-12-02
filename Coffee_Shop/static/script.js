@@ -1,4 +1,4 @@
-let accessToken = "";
+let accessToken = localStorage.getItem("accessToken") || "";
 
 async function register() {
   const res = await fetch("/auth/register", {
@@ -25,9 +25,12 @@ async function login() {
     })
   });
 
+  
+
   const data = await res.json();
   accessToken = data.access_token;
   document.getElementById("loginResult").innerText = JSON.stringify(data);
+  localStorage.setItem("accessToken", data.access_token);
 
   // Redirect to different pages based on role
   if (data.role === "admin") {
