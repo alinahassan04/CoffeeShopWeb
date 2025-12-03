@@ -25,12 +25,9 @@ async function login() {
     })
   });
 
-  
-
   const data = await res.json();
-  accessToken = data.access_token;
-  document.getElementById("loginResult").innerText = JSON.stringify(data);
   localStorage.setItem("accessToken", data.access_token);
+  document.getElementById("loginResult").innerText = JSON.stringify(data);
 
   // Redirect to different pages based on role
   if (data.role === "admin") {

@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Coffee Shop App</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    input, select { margin: 5px; }
-    button { margin: 5px; }
-    section { margin-bottom: 30px; }
-  </style>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel = "stylesheet" href = "static/style.css">
+
 <body>
-  <h1>Coffee Shop App</h1>
 
-  <section>
-    <h2>Register</h2>
-    <input id="regUsername" placeholder="username">
-    <input id="regEmail" placeholder="email">
-    <input id="regPassword" placeholder="password" type="password">
-    <select id="regRole">
-      <option value="user">user</option>
-      <option value="manager">manager</option>
-      <option value="admin">admin</option>
-    </select>
-    <button onclick="register()">Register</button>
-    <p id="registerResult"></p>
-  </section>
+<nav class="nav">
+  <div class="flex-container">
+    <h1 class="logo"><a href="{{ url_for('home') }}">Brewing</a></h1>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about_page') }}">About</a></li>
+      <li><a href="{{ url_for('login_page') }}">Login</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <section>
-    <h2>Login</h2>
-    <input id="loginUsername" placeholder="username">
-    <input id="loginPassword" placeholder="password" type="password">
-    <button onclick="login()">Login</button>
-    <p id="loginResult"></p>
+<div class="hero-image">
+  <div class="hero-text">
+    <h1 style="font-size:50px">Coffee that follows you, wherever you go.</h1>
+    <!-- Linking sign up button with onclick https://www.w3schools.com/howto/howto_css_signup_form.asp -->
+    <a href="{{ url_for('signup_page') }}"><button class="btn">Sign Up</button></a>
+    <a href="{{ url_for('learn_more_page') }}"><button class="btn">Learn More</button></a>
+  </div>
+</div>
+
+<!-- learn more-->
+    <!--HTML id Attribute: https://www.w3schools.com/html/html_id.asp-->
+<section id="about-section" class="about-coffee">
+    <h2>What We Do</h2>
+    <p>
+        We bring all your favorite coffee shops to one place! Discover new cafes tailored to your taste and browse reviews from other coffee lovers -- or share your own to help the community!</p>
+
+        <h3>Our Coffee Shop Partners</h3>
+        <div class="coffee-lists">
+            <div class="coffee-list">Qahwah House</div>
+            <div class="coffee-list">French Workshop</div>
+            <div class="coffee-list">NY Caffeine</div>
+            <div class="coffee-list">MOTW</div>
+        </div>
+      </section>
   </section>
 
 </body>
-
-<script src="/static/script.js"></script>
-
 </html>

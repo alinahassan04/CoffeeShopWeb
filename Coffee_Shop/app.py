@@ -1,11 +1,11 @@
 import os
-from datetime import datetime, timedelta # Need to fix everything using this
+from datetime import datetime, timedelta
 from functools import wraps
 
 from flask import Flask, request, jsonify
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt # will use in the future if we need to hash passwords
+from flask_bcrypt import Bcrypt
 from flask_jwt_extended import (
     JWTManager, create_access_token, jwt_required, get_jwt_identity
 )
@@ -42,7 +42,7 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     role = db.Column(db.Enum('user','admin','manager', name='role_enum'), default='user')
-    created_at = db.Column(db.DateTime, default=datetime.utcnow) # Need to fix this
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
     reviews = db.relationship('Review', backref='user', cascade='all, delete-orphan')
 
 class Shop(db.Model):
@@ -52,7 +52,7 @@ class Shop(db.Model):
     description = db.Column(db.Text)
     phone_num = db.Column(db.String(30))
     website = db.Column(db.String(200))
-    created_at = db.Column(db.DateTime, default=datetime.utcnow) # Need to fix this
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
     locations = db.relationship('Location', backref='shop', cascade='all, delete-orphan')
     menu_items = db.relationship('MenuItem', backref='shop', cascade='all, delete-orphan')
     reviews = db.relationship('Review', backref='shop', cascade='all, delete-orphan')
@@ -83,7 +83,7 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     rating = db.Column(db.Integer)
     review_text = db.Column(db.Text)
-    review_date = db.Column(db.DateTime, default=datetime.utcnow) # Need to fix this
+    review_date = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 # Function to require specific roles for endpoints
@@ -100,10 +100,29 @@ def role_required(*roles):
         return wrapper
     return decorator
 
+# ----------------------
+# Routes for HTML pages
+# ----------------------
 # Home page
 @app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route('/login.html')
+def login_page():
+    return render_template("Login.html")
+
+@app.route('/signup.html')
+def signup_page():
+    return render_template("SignUp.html")
+
+@app.route('/about.html')
+def about_page():
+    return render_template("About.html")
+
+@app.route('/learnmore.html')
+def learn_more_page():
+    return render_template("LearnMore.html")
 
 # ----------------------
 # Register a new user
@@ -115,31 +134,31 @@ def register():
     email = data.get('email')
     password = data.get('password')
     role = data.get('role', 'user')
+    
 
     if not username or not email or not password:
         return jsonify({"Error": "username, email, password required"}), 400
     if User.query.filter((User.username==username)|(User.email==email)).first():
         return jsonify({"Error": "username or email already exists"}), 409
 
-    
-    user = User(username=username, email=email, password=password, role=role)
+    hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
+    user = User(username=username, email=email, password=hashed_pw, role=role)
+
     db.session.add(user)
     db.session.commit()
     return jsonify({"Success": "User created successfully"}), 201
  
-# -----------------------
-# Login to the website
-# -----------------------
+
 @app.route('/auth/login', methods=['POST'])
 def login():
     data = request.get_json() or {}
     username = data.get('username')
     password = data.get('password')
     if not username or not password:
-        return jsonify({"Error": "Username & password required"}), 400
+        return jsonify({"Error": "username & password required"}), 400
     user = User.query.filter_by(username=username).first()
     if not user:
-        return jsonify({"Error": "No user"}), 401
+        return jsonify({"Error": "Bad username or password"}), 401
     access_token = create_access_token(identity=str(user.user_id), expires_delta=timedelta(days=7))
     return jsonify({
         "access_token": access_token,
@@ -325,12 +344,15 @@ def delete_user(user_id):
     return jsonify({"Success": f"User {user.username} , id:{user.user_id} deleted successfully"})
 
 
-# Function to create a command that can be used in the terminal to initialize the database 
 @app.cli.command("initdb")
 def initdb():
+    """Create database tables (SQLAlchemy)"""
     db.create_all()
     print("Tables created")
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
