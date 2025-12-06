@@ -10,10 +10,11 @@ Create python virtual environment (CTRL + SHIFT + P in VSCode, then search for P
 Activate the virtual environment with .venv/scripts/activate in VSCode terminal
 
 Download necessary packages in activated virtual environment terminal
-	pip install Flask Flask-SQLAlchemy Flask-Bcrypt flask-jwt-extended python-dotenv pymysql
+	pip install Flask Flask-SQLAlchemy Flask-Bcrypt flask-jwt-extended python-dotenv pymysql cryptography
 	
 In windows terminal (after entering mysql -u YOUR_USERNAME -p) or in MySQL shell (\sql to enter sql mode, then \connect YOUR_USERNAME@localhost:3306) enter: CREATE DATABASE coffeeshop;
 	(YOUR_USERNAME is your mySQL username)
 
 In virtual environment terminal enter flask initdb
 Enter python app.py to run the web app and click the http link it is running on in the terminal
+
