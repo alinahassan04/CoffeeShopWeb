@@ -343,13 +343,67 @@ def delete_user(user_id):
 
     return jsonify({"Success": f"User {user.username} , id:{user.user_id} deleted successfully"})
 
-
+# Initialize database
 @app.cli.command("initdb")
 def initdb():
-    """Create database tables (SQLAlchemy)"""
     db.create_all()
     print("Tables created")
 
+# Prepopulate database with coffeeshops
+@app.cli.command("prepopulatedb")
+def prepopulatedb():
+    # Check if database is already populated
+    if Shop.query.count() > 0 or User.query.count() > 0:
+        print("Database already populated")
+        return
+    
+    admin = User(
+        username="admin",
+        email="admin@email.com",
+        password="admin",
+        role="admin"
+    )
+    
+    manager = User(
+        username="manager",
+        email="manager@email.com",
+        password="manager",
+        role="manager"
+    )
+
+    user = User(
+        username="user",
+        email="user@email.com",
+        password="user",
+        role="user"
+    )
+
+    qahwah_house = Shop(
+        shop_name="Qahwah House",
+        description="Relaxed cafe specializing in honey-sweetened Yemeni coffee, as well as pastries like the honeycomb bread and Sabaya.",
+        phone_num="516-214-6143",
+        website="https://qahwahhouse.com/"
+    )
+
+    ny_caffeine = Shop(
+        shop_name="NY Caffeine",
+        description="Trendy coffee shop with a cozy atmosphere dishing up iced brews and hot cups, plus sweets.",
+        phone_num="516-216-1683",
+        website="https://www.nycaffeine.com/"
+    )
+
+    don_paco = Shop(
+        shop_name="Don Paco Panadería & Café",
+        description="Casual space serving popular Mexican desserts, tacos, breads, breakfasts and tortas along with coffee.",
+        phone_num="516-280-2325",
+        website="https://donpacolopez.com/"
+    )
+
+    print("Database prepopulated")
+
+    db.session.add_all([admin, manager, user, qahwah_house, ny_caffeine, don_paco])
+    db.session.commit()
+ 
 
 if __name__ == '__main__':
     app.run(debug=True)
