@@ -15,6 +15,7 @@ Download necessary packages in activated virtual environment terminal
 In windows terminal (after entering mysql -u YOUR_USERNAME -p) or in MySQL shell (\sql to enter sql mode, then \connect YOUR_USERNAME@localhost:3306) enter: CREATE DATABASE coffeeshop;
 	(YOUR_USERNAME is your mySQL username)
 
-In virtual environment terminal enter flask initdb
+In virtual environment terminal enter flask initdb, then flask prepopulatedb to prepopulate the database
 Enter python app.py to run the web app and click the http link it is running on in the terminal
+
 
