@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <title>Coffee Shop Menu</title>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="flex-container">
+    <h1 class="logo"><a href="/index.html">Brewing</a></h1>
+    <ul>
+      <li><a href="HomePage.html">Home</a></li>
+      <li><a href="HomePage.html">About</a></li>
+      <li><a href="LogIn.html">Login</a></li>
+      <li><a href="Reviews.html">Reviews</a></li>
+      <li><a href="menu.html">Menu</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="menu-main">
+  <div class="menu-header">
+    <div>
+      <h2 id="shop-name">Loading...</h2>
+      <p id="shop-description"></p>
+      <p id="shop-contact"></p>
+    </div>
+    <div class="shop-selector">
+      <label for="shop-dropdown">Select Shop:</label>
+      <select id="shop-dropdown" onchange="changeShop()">
+        <option value="">Loading shops...</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="menu-container">
+    <h3 style="color: #ffffff; margin-bottom: 20px;">Menu</h3>
+    
+    <!-- Menu Categories -->
+    <div class="menu-categories">
+      <div class="menu-category" id="coffee-section">
+        <h4>☕ Coffee</h4>
+        <div class="menu-items" id="coffee-items">
+          <p class="no-items">No coffee items available</p>
+        </div>
+      </div>
+
+      <div class="menu-category" id="food-section">
+        <h4>🍽️ Food</h4>
+        <div class="menu-items" id="food-items">
+          <p class="no-items">No food items available</p>
+        </div>
+      </div>
+
+      <div class="menu-category" id="pastry-section">
+        <h4>🥐 Pastry</h4>
+        <div class="menu-items" id="pastry-items">
+          <p class="no-items">No pastry items available</p>
+        </div>
+      </div>
+
+      <div class="menu-category" id="other-section">
+        <h4>✨ Other</h4>
+        <div class="menu-items" id="other-items">
+          <p class="no-items">No other items available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentShopId = 1; // Default to shop 1
+  
+  // Load all shops for dropdown
+  async function loadShops() {
+    try {
+      const response = await fetch('/shops');
+      if (!response.ok) {
+        throw new Error('Could not load shops');
+      }
+      
+      const shops = await response.json();
+      const dropdown = document.getElementById('shop-dropdown');
+      
+      if (shops.length === 0) {
+        dropdown.innerHTML = '<option value="">No shops available</option>';
+        return;
+      }
+      
+      dropdown.innerHTML = '';
+      shops.forEach(shop => {
+        const option = document.createElement('option');
+        option.value = shop.shop_id;
+        option.textContent = shop.shop_name;
+        if (shop.shop_id === currentShopId) {
+          option.selected = true;
+        }
+        dropdown.appendChild(option);
+      });
+    } catch (error) {
+      console.error('Error loading shops:', error);
+      document.getElementById('shop-dropdown').innerHTML = '<option value="">Error loading shops</option>';
+    }
+  }
+  
+  // Change shop when dropdown selection changes
+  function changeShop() {
+    const dropdown = document.getElementById('shop-dropdown');
+    const selectedShopId = dropdown.value;
+    if (selectedShopId) {
+      currentShopId = parseInt(selectedShopId);
+      loadMenu();
+    }
+  }
+  
+  // Fetch shop details and menu
+  async function loadMenu() {
+    try {
+      const response = await fetch(`/shops/${currentShopId}`);
+      if (!response.ok) {
+        throw new Error('Shop not found');
+      }
+      
+      const data = await response.json();
+      
+      // Update shop info
+      document.getElementById('shop-name').textContent = data.shop_name;
+      document.getElementById('shop-description').textContent = data.description || '';
+      
+      let contactInfo = '';
+      if (data.phone_num) contactInfo += `📞 ${data.phone_num} `;
+      if (data.website) contactInfo += `🌐 ${data.website}`;
+      document.getElementById('shop-contact').textContent = contactInfo;
+      
+      // Clear "no items" messages
+      document.querySelectorAll('.no-items').forEach(el => el.style.display = 'none');
+      
+      // Group menu items by category
+      const categories = {
+        coffee: [],
+        food: [],
+        pastry: [],
+        other: []
+      };
+      
+      data.menu_items.forEach(item => {
+        const category = item.category || 'other';
+        categories[category].push(item);
+      });
+      
+      // Display items by category
+      Object.keys(categories).forEach(category => {
+        const container = document.getElementById(`${category}-items`);
+        const items = categories[category];
+        
+        if (items.length > 0) {
+          container.innerHTML = '';
+          items.forEach(item => {
+            const itemCard = document.createElement('div');
+            itemCard.className = 'menu-item-card';
+            itemCard.innerHTML = `
+              <div class="menu-item-header">
+                <h5>${item.item_name}</h5>
+                <span class="menu-item-price">$${parseFloat(item.price).toFixed(2)}</span>
+              </div>
+              ${item.description ? `<p class="menu-item-description">${item.description}</p>` : ''}
+            `;
+            container.appendChild(itemCard);
+          });
+        } else {
+          container.querySelector('.no-items').style.display = 'block';
+        }
+      });
+      
+    } catch (error) {
+      console.error('Error loading menu:', error);
+      document.getElementById('shop-name').textContent = 'Error loading shop';
+      document.getElementById('shop-description').textContent = 'Could not load shop details. Please try again.';
+    }
+  }
+  
+  // Load shops and menu when page loads
+  loadShops();
+  loadMenu();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Coffee Shop App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <h1>Manager Portal</h1>
+
+   <section>
+    <h2>Create Shop</h2>
+    <input id="shopName" placeholder="Shop Name">
+    <input id="shopDesc" placeholder="Description">
+    <input id="shopPhone" placeholder="Phone">
+    <input id="shopWebsite" placeholder="Website">
+    <button onclick="createShop()">Create Shop</button>
+    <p id="shopResult"></p>
+  </section>
+
+  <section>
+    <h2>Add Location</h2>
+    <input id="locShopId" placeholder="Shop ID">
+    <input id="locAddress" placeholder="Address">
+    <input id="locCity" placeholder="City">
+    <input id="locState" placeholder="State">
+    <input id="locZip" placeholder="Zipcode">
+    <button onclick="addLocation()">Add Location</button>
+    <p id="locationResult"></p>
+  </section>
+
+  <section>
+    <h2>Add Menu Item</h2>
+    <input id="menuShopId" placeholder="Shop ID">
+    <input id="menuName" placeholder="Item Name">
+    <input id="menuPrice" placeholder="Price">
+    <input id="menuDesc" placeholder="Description">
+    <select id="menuCategory">
+      <option value="coffee">coffee</option>
+      <option value="food">food</option>
+      <option value="pastry">pastry</option>
+      <option value="other">other</option>
+    </select>
+    <button onclick="addMenuItem()">Add Menu Item</button>
+    <p id="menuResult"></p>
+  </section>
+
+  <section>
+    <h2>Add Review</h2>
+    <input id="revShopId" placeholder="Shop ID">
+    <input id="revRating" placeholder="Rating (1-5)">
+    <input id="revText" placeholder="Review Text">
+    <button onclick="addReview()">Add Review</button>
+    <p id="reviewResult"></p>
+  </section>
+
+  <section>
+    <h2>List Shops</h2>
+    <button onclick="listShops()">List Shops</button>
+    <pre id="shopsList"></pre>
+  </section>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
