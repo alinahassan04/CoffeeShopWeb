@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Coffee Shop App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <h1>User Portal</h1>
+
+    <section>
+        <h2>List Shops</h2>
+        <button onclick="listShops()">List Shops</button>
+        <pre id="shopsList"></pre>
+    </section>
+
+    <section>
+        <h2>Add Review</h2>
+        <input id="revShopId" placeholder="Shop ID">
+        <input id="revRating" placeholder="Rating (1-5)">
+        <input id="revText" placeholder="Review Text">
+        <button onclick="addReview()">Add Review</button>
+        <p id="reviewResult"></p>
+    </section>
+</body>
+
+<script src="/static/script.js"></script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Account</title>
+    <link rel = "stylesheet" href = "static/style.css">
+</head>
+<body>
+    <div class= "signup-body">
+	    <div class= "signup-form">
+            <div class = "form-container">
+                <h2>Create Account</h2>
+                <form onsubmit="event.preventDefault(); register();">
+                    <input id = "regUsername" type = "text" placeholder="Full Name" required>
+                    <input id = "regEmail" type = "text" placeholder="Email" required>
+                    <input id = "regPassword" type = "password" placeholder="Create a password" required>
+                    <input id = "regConfirmPassword" type = "password" placeholder="Confirm password" required>
+                    <!-- how to add drop down: 
+                        https://www.bbc.co.uk/bitesize/guides/zrpqy9q/revision/5#:~:text=We%20can%20also%20add%20drop,shown%20in%20the%20example%20below.&text=Each%20city%20has%20been%20set,value%20part%20of%20the%20element.
+                    -->
+                        <select name="role" id="regRole" required>
+                            <option value="">Select Role</option>
+                            <option value="user">Customer</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                        </select>
+
+                    <input type = "submit" value = "Sign Up" >
+                </form> 
+            </div>
+        </div>
+    </div>
+</body>
+    
+    <script src="/static/script.js"></script>
+</html>
