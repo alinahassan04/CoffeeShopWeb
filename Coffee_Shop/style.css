@@ -38,6 +38,13 @@ body, html {
   padding: 7px 15px;
 }
 
+/* logo*/
+.logo img {
+  height: 50px;
+  width: auto; 
+  vertical-align: middle;
+}
+
 /* hero image under navigation bar
 https://www.w3schools.com/howto/howto_css_hero_image.asp 
     */
