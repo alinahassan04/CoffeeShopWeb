@@ -526,5 +526,230 @@ https://www.w3schools.com/howto/howto_css_hero_image.asp
   cursor: not-allowed;
 }
 
+/* MENU PAGE */
+.menu-page-container {
+  margin-top: 80px;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #EDD0A5, #4E1411);
+}
+
+/* Shop Selector Section */
+.menu-shop-selector {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  margin: 0 auto 30px;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(78, 20, 17, 0.2);
+}
+
+.menu-shop-selector h1 {
+  margin: 0 0 10px 0;
+  color: #4E1411;
+  font-size: 42px;
+}
+
+.menu-shop-selector p {
+  margin: 0 0 25px 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.menu-shop-selector select {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 20px;
+  border: 2px solid #4E1411;
+  border-radius: 8px;
+  background-color: white;
+  color: #4E1411;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-shop-selector select:focus {
+  border-color: #EBBBA3;
+  outline: none;
+  box-shadow: 0 0 8px #EBBBA3;
+}
+
+/* Shop Info Section */
+.menu-shop-info {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin: 0 auto 30px;
+  max-width: 900px;
+  box-shadow: 0 6px 15px rgba(78, 20, 17, 0.15);
+  border-left: 6px solid #4E1411;
+}
+
+.menu-shop-info h2 {
+  margin: 0 0 12px 0;
+  color: #4E1411;
+  font-size: 32px;
+}
+
+.menu-shop-info p {
+  margin: 0 0 15px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.shop-contact {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #666;
+}
+
+.shop-contact a {
+  color: #4E1411;
+  text-decoration: underline;
+}
+
+/* Menu Display Section */
+.menu-display {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu-empty {
+  background: white;
+  border-radius: 15px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(78, 20, 17, 0.15);
+}
+
+.menu-empty p {
+  margin: 0;
+  color: #666;
+  font-size: 18px;
+}
+
+/* Category Section */
+.menu-category-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 15px rgba(78, 20, 17, 0.15);
+}
+
+.menu-category-title {
+  margin: 0 0 20px 0;
+  color: white;
+  background: #4E1411;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 24px;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+/* Menu Items Rows */
+.menu-items-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px;
+  border-bottom: 2px solid #EBBBA3;
+  transition: background-color 0.2s;
+}
+
+.menu-item-row:last-child {
+  border-bottom: none;
+}
+
+.menu-item-row:hover {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.menu-item-details {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.menu-item-name {
+  margin: 0 0 6px 0;
+  color: #4E1411;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu-item-desc {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.menu-item-price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4E1411;
+  background: #EBBBA3;
+  padding: 8px 18px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-page-container {
+    padding: 20px 15px;
+  }
+
+  .menu-shop-selector {
+    padding: 30px 20px;
+  }
+
+  .menu-shop-selector h1 {
+    font-size: 32px;
+  }
+
+  .menu-shop-info {
+    padding: 20px;
+  }
+
+  .menu-shop-info h2 {
+    font-size: 26px;
+  }
+
+  .menu-category-section {
+    padding: 20px;
+  }
+
+  .menu-item-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-item-details {
+    padding-right: 0;
+  }
+
+  .menu-item-price {
+    align-self: flex-start;
+  }
+
+  .shop-contact {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
   
   
