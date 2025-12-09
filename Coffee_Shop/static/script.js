@@ -27,15 +27,16 @@ async function login() {
 
   const data = await res.json();
   localStorage.setItem("accessToken", data.access_token);
+  accessToken = data.access_token;
   document.getElementById("loginResult").innerText = JSON.stringify(data);
 
   // Redirect to different pages based on role
   if (data.role === "admin") {
-    window.location.href = "admin.html";
+    window.location.href = "/admin.html";
   } else if (data.role === "manager") {
-    window.location.href = "manager.html";
+    window.location.href = "/manager.html";
   } else {
-    window.location.href = "user.html";
+    window.location.href = "/user.html";
   }
 }
 
@@ -131,5 +132,4 @@ async function deleteUser() {
   const data = await res.json();
   document.getElementById("deleteUserResult").innerText = JSON.stringify(data);
 }
-
 

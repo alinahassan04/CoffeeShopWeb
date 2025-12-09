@@ -116,13 +116,18 @@ def login_page():
 def signup_page():
     return render_template("SignUp.html")
 
-@app.route('/about.html')
-def about_page():
-    return render_template("About.html")
-
 @app.route('/learnmore.html')
 def learn_more_page():
     return render_template("LearnMore.html")
+
+@app.route("/menu.html")
+def menu_page():
+    return render_template("menu.html")
+
+@app.route("/reviews.html")
+def reviews_page():
+    return render_template("reviews.html")
+
 
 # ----------------------
 # Register a new user
@@ -360,21 +365,21 @@ def prepopulatedb():
     admin = User(
         username="admin",
         email="admin@email.com",
-        password="admin",
+        password=bcrypt.generate_password_hash("admin").decode('utf-8'),
         role="admin"
     )
     
     manager = User(
         username="manager",
         email="manager@email.com",
-        password="manager",
+        password=bcrypt.generate_password_hash("manager").decode('utf-8'),
         role="manager"
     )
 
     user = User(
         username="user",
         email="user@email.com",
-        password="user",
+        password=bcrypt.generate_password_hash("user").decode('utf-8'),
         role="user"
     )
 
