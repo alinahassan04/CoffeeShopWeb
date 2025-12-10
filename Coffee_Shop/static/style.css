@@ -969,6 +969,13 @@ https://www.w3schools.com/css/css_selectors.asp*/
   color: #4E1411;
 }
 /* shop-card class */
+
+.shop-card-container {
+  width: 100%;
+  margin: 35px;
+  padding: 20;
+  
+}
 .shop-card {
   font-family: Arial, Helvetica, sans-serif;
   color:#4E1411
