@@ -973,4 +973,7 @@ https://www.w3schools.com/css/css_selectors.asp*/
   font-family: Arial, Helvetica, sans-serif;
   color:#4E1411
   font-size: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
