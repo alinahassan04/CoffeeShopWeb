@@ -9,22 +9,22 @@
 <body>
 
   <!-- Navigation bar -->
-<nav class="nav">
-  <div class="flex-container">
-    <h1 class="logo"><a href="{{ url_for('home') }}"><img src = static/Brewing.png>Brewing</a></h1>
-    <ul>
-      <li><a href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="{{ url_for('learn_more_page') }}">About</a></li>
-      <li><a href="{{ url_for('login_page') }}">Login</a></li>
-      <li><a href="{{ url_for('reviews_page') }}">Reviews</a></li>
-      <li><a href="{{ url_for('menu_page') }}">Menu</a></li>
-    </ul>
-  </div>
+  <nav class="nav">
+    <div class="flex-container">
+      <h1 class="logo"><a href="{{ url_for('home') }}"><img src = static/Brewing.png>Brewing</a></h1>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('learn_more_page') }}">About</a></li>
+        <li><a href="{{ url_for('login_page') }}">Login</a></li>
+        <li><a href="{{ url_for('reviews_page') }}">Reviews</a></li>
+        <li><a href="{{ url_for('menu_page') }}">Menu</a></li>
+      </ul>
+    </div>
 </nav>
 
 
   <!-- Menu Page Content -->
-  <div class="menu-page-container">
+  <div class="reviews-main">
     
     <!-- Shop Selector -->
     <div class="menu-shop-selector">
@@ -36,25 +36,28 @@
     </div>
 
     <!-- Shop Info -->
-    <div id="shopInfo" class="menu-shop-info" style="display: none;">
+    <div id="shopInfo" class="review-form-card" style="display: none;">
       <h2 id="shopName"></h2>
       <p id="shopDescription"></p>
       <div class="shop-contact">
         <span id="shopPhone"></span>
         <span id="shopWebsite"></span>
       </div>
-    </div>
 
-    <!-- Menu Items by Category -->
-    <div id="menuDisplay" class="menu-display">
+      <!-- Menu Items by Category -->
+    <div id="menuDisplay" >
       <div class="menu-empty">
         <p>Select a coffee shop above to view their menu</p>
       </div>
     </div>
+    </div>
+
+    
 
   </div>
 
   <script src="/static/script.js"></script>
+  
   <script>
     const API_BASE = 'http://127.0.0.1:5000';
 

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset = "UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-    <link rel = "stylesheet" href = "static/style.css">
+  <title>Coffee Shop App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
- <nav class="nav">
+    <nav class="nav">
   <div class="flex-container">
     <h1 class="logo"><a href="{{ url_for('home') }}"><img src = static/Brewing.png>Brewing</a></h1>
     <ul>
@@ -19,35 +20,25 @@
     </ul>
   </div>
 </nav>
-    <div class= "login-body">
-	    <div class= "login-form">
-            <div class = "loginform-container ">
+  <div class="login-body">
+        <div class="login-form">
+            <div class="loginform-container">
                 <h2>Login</h2>
-                <form id="loginForm">
-                    <input type = "text" id = "loginUsername" placeholder="Username" required>
-                    <input type = "password" id = "loginPassword" placeholder="Enter your password" required>
-                    <input type = "submit" value = "Login" required>
-                </form> 
+
+                <form onsubmit="event.preventDefault(); login();">
+                    <input id="loginUsername" type="text" placeholder="username" required>
+                    <input id="loginPassword" type="password" placeholder="password" required>
+
+                    <input type="submit" value="Login">
+                </form>
+
                 <p id="loginResult"></p>
             </div>
         </div>
-
-      <script src="/static/script.js"></script>
-      <script>
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); 
-            await login();      
-        });
-
-        window.addEventListener("pageshow", () => {
-            const loginResult = document.getElementById("loginResult");
-            if (loginResult) {
-                loginResult.innerText = "";
-            }
-        });
-      </script>
-      
     </div>
+
 </body>
+
+<script src="/static/script.js"></script>
+
 </html>
-   

@@ -867,9 +867,9 @@ https://www.w3schools.com/howto/howto_css_hero_image.asp
 
 
  
-/* admin portal*/
+/* portal*/
 
-.admin-body {
+.portal-body {
   font-family: Arial, Helvetica, sans-serif;
   /*make gradient background: https://www.w3schools.com/css/css3_gradients.asp*/
   background: linear-gradient(135deg,#4E1411, #EDD0A5);
@@ -881,11 +881,11 @@ https://www.w3schools.com/howto/howto_css_hero_image.asp
   line-height: 1.5;
 }
 /*container for form*/
-.admin-form-container {
+.portal-form-container {
   width: 100%;
 }
 
-.admin-form {
+.portal-form {
   width: 1000px;
   background-color: white; 
   border-radius: 15px;
@@ -902,7 +902,7 @@ https://stackoverflow.com/questions/4772906/css-is-it-possible-to-add-
 a-black-outline-around-each-character-in-text
 */
 
-.admin-form-container h1 {
+.portal-form-container h1 {
   text-align: center;
   color: #4E1411;
   text-shadow: #EBBBA3 0px 0px 5px;
@@ -911,7 +911,7 @@ a-black-outline-around-each-character-in-text
   font-weight: bold;
 }
 
-.admin-form-container h2 {
+.portal-form-container h2 {
   text-align: left;
   color: #4E1411;
   margin-bottom: 25px;
@@ -920,7 +920,7 @@ a-black-outline-around-each-character-in-text
 }
 
 /*input fields*/
-.admin-form input {
+.portal-form input {
   width: 15%;
   padding: 12px 15px;
   margin-bottom: 15px;
@@ -968,22 +968,27 @@ https://www.w3schools.com/css/css_selectors.asp*/
   background-color: #EBBBA3;
   color: #4E1411;
 }
+
 /* shop-card class */
 
 .shop-card-container {
   width: 100%;
   margin: 35px;
   padding: 20;
-  font-color: #4e1411;
-  
+  color: #4e1411;
 }
 .shop-card {
   font-family: Arial, Helvetica, sans-serif;
-  color:#4E1411
+  color:#4E1411;
   font-size: 18px;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
   border: 2px solid #4E1411;
   line-height: 1.5;
+}
+
+.shop-card p {
+  white-space: normal; 
+  word-break: break-word; 
 }

@@ -134,7 +134,7 @@ def reviews_page():
 # ----------------------
 @app.route('/auth/register', methods=['POST'])
 def register():
-    data = request.get_json() or {}
+    data = request.get_json()
     username = data.get('username')
     email = data.get('email')
     password = data.get('password')
@@ -156,7 +156,7 @@ def register():
 
 @app.route('/auth/login', methods=['POST'])
 def login():
-    data = request.get_json() or {}
+    data = request.form
     username = data.get('username')
     password = data.get('password')
     if not username or not password:

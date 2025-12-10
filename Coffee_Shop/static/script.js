@@ -12,7 +12,7 @@ async function register() {
     })
   });
   const data = await res.json();
-  document.getElementById("registerResult").innerText = JSON.stringify(data);
+  document.getElementById("success-message").innerText = JSON.stringify(data);
 }
 
 async function login() {
@@ -119,16 +119,24 @@ async function listShops() {
 
   const container = document.getElementById("shopsList");
   data.forEach(shop => {
+    const divContainer = document.createElement("div-container");
+    divContainer.className = "shop-card-container";
+
     const div = document.createElement("div");
     div.className = "shop-card";
 
     div.innerHTML = `
       <h3>${shop.shop_name}</h3>
-      <p>Id: ${shop.shop_id}</p>
-      <p>Description: ${shop.description}</p>
+      <p>Id: ${shop.shop_id}<br>
+      Description: ${shop.description}<br>
+      Phone: ${shop.phone_num}<br>
+      Website: ${shop.website}<br>
+      </p>
+
     `;
-    
-    container.appendChild(div);
+
+    divContainer.appendChild(div);
+    container.appendChild(divContainer);
   });
 }
 
