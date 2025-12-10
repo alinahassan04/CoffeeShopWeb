@@ -974,6 +974,7 @@ https://www.w3schools.com/css/css_selectors.asp*/
   width: 100%;
   margin: 35px;
   padding: 20;
+  font-color: #4e1411;
   
 }
 .shop-card {
@@ -983,4 +984,6 @@ https://www.w3schools.com/css/css_selectors.asp*/
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
+  border: 2px solid #4E1411;
+  line-height: 1.5;
 }
