@@ -116,7 +116,20 @@ async function addReview() {
 async function listShops() {
   const res = await fetch("/shops");
   const data = await res.json();
-  document.getElementById("shopsList").innerText = JSON.stringify(data, null, 2);
+
+  const container = document.getElementById("shopsList");
+  data.forEach(shop => {
+    const div = document.createElement("div");
+    div.className = "shop-card";
+
+    div.innerHTML = `
+      <h3>${shop.shop_name}</h3>
+      <p>Id: ${shop.shop_id}</p>
+      <p>Description: ${shop.description}</p>
+    `;
+    
+    container.appendChild(div);
+  });
 }
 
 async function deleteUser() {
