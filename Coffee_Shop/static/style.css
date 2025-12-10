@@ -971,12 +971,6 @@ https://www.w3schools.com/css/css_selectors.asp*/
 /* shop-card class */
 .shop-card {
   font-family: Arial, Helvetica, sans-serif;
-  /*make gradient background: https://www.w3schools.com/css/css3_gradients.asp*/
-  background: linear-gradient(135deg,#4E1411, #EDD0A5);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  line-height: 1.5;
+  color:#4E1411
+  font-size: 18px;
 }
